@@ -27,9 +27,14 @@ public class Two extends PApplet {
         int amp = 100;      // 振幅(音声チャンネルを画面上に波形で映し出す際の振幅)
 
         // 波形描画
-        for(int i = 0; i < player.left.size()-1; i++) {
+        for(int i = 0; i < player.left.size() - 1; i++) {
             line(i, 100 + player.left.get(i)*amp, i+1, 100 + player.left.get(i+1)*amp);    // Lチャンネルの波形
             line(i, 300 + player.right.get(i)*amp, i+1, 300 + player.right.get(i+1)*amp);  // Rチャンネルの波形
+        }
+
+        stroke(220, 200, 220);
+        for(int i = 0; i < player.left.size() - 1; i++) {
+            line(0, 0, i+1, 300 + player.right.get(i+1)*amp);  // Rチャンネルの波形
         }
     }
 
@@ -39,7 +44,7 @@ public class Two extends PApplet {
         minim.stop();
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         PApplet.main("Two.Two");
     }
 }
